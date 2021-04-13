@@ -270,6 +270,7 @@ prepare_for_map_chart <- function(data_map_asset_type,
                                   year_filter,
                                   value_divisor = 1,
                                   allocation_method = NULL) {
+
   if (is.null(allocation_method)) {
     if (asset_type == "Equity") {
       allocation_method <- "ownership_weight"
@@ -279,7 +280,7 @@ prepare_for_map_chart <- function(data_map_asset_type,
   }
 
   world_map <- map_data(map = "world") %>%
-    mutate(iso2c = iso.alpha(world_map$region, n = 2))
+    mutate(iso2c = iso.alpha(.data$region, n = 2))
 
   data_map <- data_map_asset_type %>%
     filter(

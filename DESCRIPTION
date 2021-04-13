@@ -1,15 +1,34 @@
 Package: r2dii.plot.internal
-Title: What the Package Does (One Line, Title Case)
+Title: Create '2dii' plots for internal use
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Monika",
+           family = "Furdyna",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "monika.furdyna@gmail.com")
+Description: Allows the user to create standardized '2dii' graphs that are
+    used internally by analysts, for example in metareport, stress tests, 
+    impact analysis, and outputs them as 'ggplot' objects. It also contains 
+    data processing functions that prepare the data to be an input for the 
+    plotting functions.
+License: MIT + file LICENSE
+URL: https://github.com/2DegreesInvesting/r2dii.plot.internal
+BugReports: 
+    https://github.com/2DegreesInvesting/r2dii.plot.internal/issues
+Depends: 
+    R (>= 3.6)
+Imports:
+  dplyr,
+  ggplot2,
+  magrittr,
+  maps,
+  ggpubr,
+  stats,
+  scales,
+  grDevices,
+  tidyr
+Suggests:
+  r2dii.plot.static
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

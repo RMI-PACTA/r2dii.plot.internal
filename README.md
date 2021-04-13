@@ -140,6 +140,8 @@ These is a basic example of using `plot_metareport_map()` given that you
 have the `Equity_results_map.rda` or `Bonds_results_map.rda` data set
 from PACTA analysis results loaded in your environment:
 
+    library(dplyr)
+
     data_map_eq_chart <- prepare_for_map_chart(data_map_eq,
                                       asset_type = "Equity",
                                       technology_filter = "Oil",

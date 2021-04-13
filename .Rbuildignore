@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
+^example_script\.R$
+^README\.Rmd$
+^\.github$
