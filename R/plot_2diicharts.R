@@ -27,7 +27,8 @@ plot_metareport_security_types <- function(data,
                                                  c("dark_blue", "green", "grey")
                                              ),
                                            bars_labels_specs = NULL) {
-  r2dii_colors <- r2dii_palette_colours()
+
+  r2dii_colors <- r2dii.plot.static::r2dii_palette_colours()
 
   bars_asset_type_specs <- left_join(bars_asset_type_specs, r2dii_colors,
     by = c("r2dii_colour_name" = "label")
@@ -48,7 +49,7 @@ plot_metareport_security_types <- function(data,
       y = .data$share
     )
   ) +
-    theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii_ggplot() +
     geom_bar(stat = "identity", width = 0.8) +
     coord_flip() +
     scale_fill_manual(values = rev(bars_asset_type_specs$colour_hex)) +
@@ -86,7 +87,8 @@ plot_metareport_security_types <- function(data,
 plot_metareport_pacta_sectors <- function(data,
                                           bars_labels_specs = NULL,
                                           plot_title = NULL) {
-  r2dii_colors <- r2dii_palette_colours()
+
+  r2dii_colors <- r2dii.plot.static::r2dii_palette_colours()
 
   asset_types <- c("Equity", "Bonds")
   asset_types_colours <- c("dark_blue", "green")
@@ -135,7 +137,7 @@ plot_metareport_pacta_sectors <- function(data,
       xlab("") +
       labs(title = asset_type_filter) +
       coord_flip() +
-      theme_2dii_ggplot() +
+      r2dii.plot.static::theme_2dii_ggplot() +
       theme(axis.line.y = element_blank()) +
       theme(axis.ticks.y = element_blank()) +
       theme(legend.position = "none") %+replace%
@@ -189,6 +191,7 @@ plot_metareport_pacta_sectors_mix <- function(data,
                                                 )
                                               ),
                                               bars_labels_specs = NULL) {
+
   if (is.null(bars_labels_specs)) {
     bars_labels_specs <- data.frame(
       "investor_name" = unique(data$investor_name),
@@ -201,7 +204,7 @@ plot_metareport_pacta_sectors_mix <- function(data,
       "Investment per sector as percentage of total value invested in PACTA sectors"
   }
 
-  r2dii_sector_colours <- r2dii_sector_colours()
+  r2dii_sector_colours <- r2dii.plot.static::r2dii_sector_colours()
 
   data_colours <- df_sectors_order %>%
     left_join(r2dii_sector_colours, by = c("sector" = "label"))
@@ -234,7 +237,7 @@ plot_metareport_pacta_sectors_mix <- function(data,
         values = data_colours$colour_hex
       ) +
       coord_flip() +
-      theme_2dii_ggplot() +
+      r2dii.plot.static::theme_2dii_ggplot() +
       theme(axis.line.y = element_blank()) +
       theme(axis.ticks.y = element_blank()) +
       theme(legend.position = "none") %+replace%
@@ -286,6 +289,7 @@ plot_metareport_distribution <- function(data,
                                          x_title = "",
                                          y_title = "",
                                          investor_labels = NULL) {
+
   if (is.null(investor_labels)) {
     investor_labels <- data.frame(
       "investor_name" = unique(data$investor_name),
@@ -293,7 +297,7 @@ plot_metareport_distribution <- function(data,
     )
   }
 
-  r2dii_colours <- r2dii_palette_colours()
+  r2dii_colours <- r2dii.plot.static::r2dii_palette_colours()
 
   p <- ggplot(
     data,
@@ -317,7 +321,7 @@ plot_metareport_distribution <- function(data,
       values = r2dii_colours$colour_hex[c(1:length(investor_labels$label))],
       labels = investor_labels$label
     ) +
-    theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii_ggplot() +
     theme(
       axis.text.x = element_blank(),
       axis.ticks.x = element_blank()
@@ -354,6 +358,7 @@ plot_metareport_bubble <- function(data,
                                    investor_labels = NULL,
                                    colour_investors = TRUE,
                                    show_legend_when_coloured = TRUE) {
+
   if (is.null(investor_labels)) {
     investor_labels <- data.frame(
       "investor_name" = unique(data$investor_name),
@@ -362,7 +367,7 @@ plot_metareport_bubble <- function(data,
   }
 
   if (colour_investors) {
-    r2dii_colours <- r2dii_palette_colours()
+    r2dii_colours <- r2dii.plot.static::r2dii_palette_colours()
 
     p <- ggplot(
       data,
@@ -399,7 +404,7 @@ plot_metareport_bubble <- function(data,
       labels = scales::percent_format(),
       expand = expansion(mult = c(0, 0.05))
     ) +
-    theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii_ggplot() +
     theme(legend.position = "none") +
     theme(
       panel.grid.major = element_line(colour = "grey92", linetype = "dashed"),
@@ -441,14 +446,15 @@ plot_metareport_map <- function(data,
                                 plot_title = NULL,
                                 legend_title = NULL,
                                 sector = NULL) {
+
   if (is.null(sector)) {
-    colours <- r2dii_palette_colours()
+    colours <- r2dii.plot.static::r2dii_palette_colours()
 
     dark_colour <- colours %>%
       filter(.data$label == "dark_blue") %>%
       pull(.data$colour_hex)
   } else {
-    sec_colours <- r2dii_sector_colours()
+    sec_colours <- r2dii.plot.static::r2dii_sector_colours()
 
     dark_colour <- sec_colours %>%
       filter(.data$label == tolower(!!sector)) %>%
@@ -473,7 +479,7 @@ plot_metareport_map <- function(data,
     geom_polygon() +
     coord_cartesian(ylim = c(-55, 85)) +
     ggtitle(plot_title) +
-    theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii_ggplot() +
     theme(
       axis.line = element_blank(),
       axis.text = element_blank(),
