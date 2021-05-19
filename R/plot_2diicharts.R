@@ -315,7 +315,7 @@ plot_metareport_distribution <- function(data,
     labs(title = plot_title) +
     scale_y_continuous(
       labels = scales::percent_format(),
-      expand = c(0, 0)
+      expand = expansion(mult = c(0, .05))
     ) +
     scale_fill_manual(
       values = r2dii_colours$colour_hex[c(1:length(investor_labels$label))],
