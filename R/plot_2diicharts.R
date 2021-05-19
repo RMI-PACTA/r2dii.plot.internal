@@ -49,7 +49,7 @@ plot_metareport_security_types <- function(data,
       y = .data$share
     )
   ) +
-    r2dii.plot.static::theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii() +
     geom_bar(stat = "identity", width = 0.8) +
     coord_flip() +
     scale_fill_manual(values = rev(bars_asset_type_specs$colour_hex)) +
@@ -137,7 +137,7 @@ plot_metareport_pacta_sectors <- function(data,
       xlab("") +
       labs(title = asset_type_filter) +
       coord_flip() +
-      r2dii.plot.static::theme_2dii_ggplot() +
+      r2dii.plot.static::theme_2dii() +
       theme(axis.line.y = element_blank()) +
       theme(axis.ticks.y = element_blank()) +
       theme(legend.position = "none") %+replace%
@@ -237,7 +237,7 @@ plot_metareport_pacta_sectors_mix <- function(data,
         values = data_colours$colour_hex
       ) +
       coord_flip() +
-      r2dii.plot.static::theme_2dii_ggplot() +
+      r2dii.plot.static::theme_2dii() +
       theme(axis.line.y = element_blank()) +
       theme(axis.ticks.y = element_blank()) +
       theme(legend.position = "none") %+replace%
@@ -321,7 +321,7 @@ plot_metareport_distribution <- function(data,
       values = r2dii_colours$colour_hex[c(1:length(investor_labels$label))],
       labels = investor_labels$label
     ) +
-    r2dii.plot.static::theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii() +
     theme(
       axis.text.x = element_blank(),
       axis.ticks.x = element_blank()
@@ -404,7 +404,7 @@ plot_metareport_bubble <- function(data,
       labels = scales::percent_format(),
       expand = expansion(mult = c(0, 0.05))
     ) +
-    r2dii.plot.static::theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii() +
     theme(legend.position = "none") +
     theme(
       panel.grid.major = element_line(colour = "grey92", linetype = "dashed"),
@@ -479,7 +479,7 @@ plot_metareport_map <- function(data,
     geom_polygon() +
     coord_cartesian(ylim = c(-55, 85)) +
     ggtitle(plot_title) +
-    r2dii.plot.static::theme_2dii_ggplot() +
+    r2dii.plot.static::theme_2dii() +
     theme(
       axis.line = element_blank(),
       axis.text = element_blank(),
